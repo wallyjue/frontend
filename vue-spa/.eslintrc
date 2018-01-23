@@ -1,0 +1,6 @@
+{
+    "globals": {
+        "System": false,
+        "resolve": false
+    }
+}
