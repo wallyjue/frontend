@@ -1,6 +1,12 @@
 <template>
 <div class="content">
-  <div v-if="isAuthenticated">Hello authenticated user! <button v-on:click="logout()" class="button is-primary" >Logout</button></div>
+  <div v-if="isAuthenticated">Hello authenticated user!
+    <p>Name: {{profile.firstName}}</p>
+    <p>Favorite Sandwich: {{profile.favoriteSandwich}}</p>
+    <button v-on:click="logout()" class="button is-primary" >
+      Logout
+    </button>
+  </div>
   <div v-else>
     <h2>Login</h2>
     <div class="field is-horizontal">
@@ -53,7 +59,8 @@ export default {
     return {
       username: '',
       password: '',
-      isAuthenticated: false
+      isAuthenticated: false,
+      profile: {}
     }
   },
   watch: {
@@ -63,6 +70,8 @@ export default {
           .then(profile => {
             this.profile = profile
           })
+      } else {
+        this.profile = {}
       }
     }
   },
